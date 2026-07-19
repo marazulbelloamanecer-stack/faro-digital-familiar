@@ -1,0 +1,99 @@
+/* ==========================================================================
+   FARO DIGITAL FAMILIAR - DISEÑO COMPACTO
+   ========================================================================== */
+
+.portada-universo-faro {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(to top,
+            rgba(168, 55, 106, 0.5),
+            rgba(244, 63, 94, 0.2)),
+        image-url("fondo_espacial.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+}
+
+.interfaz-ajustada {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo del farito */
+.faro-logo {
+    width: 200px;
+    /* tamaño reducido */
+    height: auto;
+    /* mantiene proporción */
+    margin-bottom: 20px;
+    background-image: image-url("faro_digital_familiar.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+/* Títulos */
+.texto-branding {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tagline-faro {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffb74d;
+    margin: 0 0 15px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Caja de login */
+.tarjeta-login-esfumada {
+    max-width: 350px;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-login-esfumada:hover {
+    transform: translateY(-5px);
+}
+
+/* Botones */
+.navegacion-botones-cortos {
+    max-width: 350px;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.btn-faro-estilizado {
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #a8376a, #f43f5e);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-faro-estilizado:hover {
+    background: linear-gradient(90deg, #f43f5e, #a8376a);
+    transform: scale(1.05);
+}

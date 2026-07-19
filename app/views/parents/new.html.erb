@@ -1,0 +1,165 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(145deg, #0a1931 0%, #5599e1 40%, #6b2a5c 70%, #1b3a5c 100%);
+    padding: 20px;
+  }
+
+  .registro-container {
+    max-width: 500px;
+    width: 100%;
+    background: rgba(10, 25, 49, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  h2 {
+    color: #f5e9d8;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+  }
+
+  .campo {
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .campo label {
+    color: #d4c4a8;
+    font-weight: 500;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .campo input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 60px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 16px;
+    outline: 2px solid transparent;
+    transition: 0.3s;
+  }
+
+  .campo input:focus {
+    outline: 2px solid #f3b37e;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .campo input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-crear {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(145deg, #f3b37e, #d48c5a);
+    border: none;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #0b1a2e;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    margin-top: 8px;
+  }
+
+  .btn-crear:hover {
+    transform: scale(1.02);
+    background: linear-gradient(145deg, #ffc89c, #e69b6a);
+  }
+
+  .enlace {
+    color: #87b2d6;
+    margin-top: 20px;
+    font-size: 15px;
+  }
+
+  .enlace a {
+    color: #f3b37e;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .enlace a:hover {
+    text-decoration: underline;
+  }
+
+  .errores {
+    background: rgba(255, 107, 107, 0.15);
+    border: 1px solid #ff6b6b;
+    padding: 12px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    color: #ffb3b3;
+    text-align: left;
+  }
+
+  .errores ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+</style>
+
+<div class="registro-container">
+  <h2>📝 Registro de Padre</h2>
+
+  <% if @parent.errors.any? %>
+    <div class="errores">
+      <ul>
+        <% @parent.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @parent, url: signup_path do |f| %>
+    <div class="campo">
+      <%= f.label :name, "Nombre completo" %>
+      <%= f.text_field :name, placeholder: "Ej: Ana Pérez" %>
+    </div>
+
+    <div class="campo">
+      <%= f.label :email, "Correo electrónico" %>
+      <%= f.email_field :email, placeholder: "ejemplo@correo.com" %>
+    </div>
+
+    <div class="campo">
+      <%= f.label :password, "Contraseña" %>
+      <%= f.password_field :password, placeholder: "••••••••" %>
+    </div>
+
+    <div class="campo">
+      <%= f.label :password_confirmation, "Confirmar contraseña" %>
+      <%= f.password_field :password_confirmation, placeholder: "••••••••" %>
+    </div>
+
+    <%= f.submit "Crear cuenta", class: "btn-crear" %>
+  <% end %>
+
+  <div class="enlace">
+    ¿Ya tienes cuenta? <%= link_to "Inicia sesión", login_path %>
+  </div>
+</div>

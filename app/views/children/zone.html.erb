@@ -1,0 +1,182 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(145deg, #0a1931 0%, #1b3a5c 40%, #6b2a5c 70%, #1b3a5c 100%);
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .zona-container {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(10, 25, 49, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 50px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  h1 {
+    color: #f5e9d8;
+    font-size: 38px;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+  }
+
+  .subtitulo {
+    color: #d4c4a8;
+    font-size: 18px;
+    margin-bottom: 30px;
+    border-top: 2px solid rgba(243, 179, 126, 0.2);
+    border-bottom: 2px solid rgba(243, 179, 126, 0.2);
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 40px;
+  }
+
+  .grid-ninos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+  }
+
+  .tarjeta-nino {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    padding: 20px 10px;
+    transition: 0.3s;
+    color: #f5e9d8;
+  }
+
+  .tarjeta-nino:hover {
+    transform: scale(1.03);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #f3b37e;
+  }
+
+  .tarjeta-nino .emoji {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .tarjeta-nino .nombre {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .tarjeta-nino .edad {
+    font-size: 14px;
+    color: #94b0c7;
+  }
+
+  .btn-jugar {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #f3b37e, #d48c5a);
+    border-radius: 40px;
+    color: #0b1a2e;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+  }
+
+  .btn-jugar:hover {
+    background: linear-gradient(145deg, #ffc89c, #e69b6a);
+    transform: scale(1.05);
+  }
+
+  .sin-hijos {
+    color: #94b0c7;
+    font-size: 18px;
+    padding: 30px 0;
+  }
+
+  .btn-volver {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 60px;
+    color: #f5e9d8;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .btn-volver:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #f3b37e;
+  }
+
+  .mensaje-bienvenida {
+    color: #d4c4a8;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .btn-memoria {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  color: #94b0c7;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-memoria:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #f3b37e;
+  color: #f5e9d8;
+}
+</style>
+
+<div class="zona-container">
+  <h1>🧒 Zona de Niños</h1>
+  <div class="subtitulo">✨ Aprende, juega y crece seguro ✨</div>
+
+  <p class="mensaje-bienvenida">
+    ¡Hola, <strong style="color: #f3b37e;"><%= @parent.name %></strong>!<br>
+    Aquí están tus pequeños exploradores:
+  </p>
+
+  <% if @children.any? %>
+    <div class="grid-ninos">
+<% @children.each do |child| %>
+  <div class="tarjeta-nino">
+    <span class="emoji">🧸</span>
+    <span class="nombre"><%= child.name %></span>
+    <span class="edad"><%= child.age %> años</span>
+
+    <%= link_to "🎮 Jugar", play_child_path(child), class: "btn-jugar" %>
+    <%= link_to "🧠 Memoria", memory_game_path, class: "btn-memoria" %>
+    </div>
+    <% end %>
+  <% else %>
+    <div class="sin-hijos">
+      🌱 Aún no tienes hijos registrados.<br>
+      <%= link_to "➕ Agregar hijo", new_child_path, style: "color: #f3b37e; text-decoration: none; font-weight: 600;" %>
+    </div>
+  <% end %>
+      <%= link_to "← Volver al Panel", panel_path, class: "btn-volver" %>
+      <%= link_to "🤖 FaroBot", chatbot_path, class: "btn-jugar" %>
+    </div>

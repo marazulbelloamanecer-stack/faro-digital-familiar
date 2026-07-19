@@ -1,0 +1,138 @@
+<style>
+  body {
+    background: linear-gradient(145deg, #0a1931, #1b3a5c);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .play-container {
+    max-width: 750px;
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 50px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  h1 {
+    color: #f5e9d8;
+    font-size: 2.4rem;
+    margin-bottom: 5px;
+  }
+
+  .emoji-nino {
+    font-size: 4rem;
+  }
+
+  .bienvenida {
+    color: #d4c4a8;
+    font-size: 1.1rem;
+    margin: 10px 0 25px;
+  }
+
+  .seccion {
+    margin: 30px 0;
+    text-align: left;
+  }
+
+  .seccion h2 {
+    color: #f3b37e;
+    font-size: 1.5rem;
+    border-bottom: 2px solid rgba(243, 179, 126, 0.2);
+    padding-bottom: 8px;
+  }
+
+  .tarjeta {
+    background: rgba(255,255,255,0.04);
+    border-radius: 20px;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border: 1px solid rgba(255,255,255,0.05);
+    color: #d4c4a8;
+  }
+
+  .tarjeta strong {
+    color: #f5e9d8;
+  }
+
+  iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 20px;
+    border: none;
+    margin-top: 10px;
+  }
+
+ .btn-cuento {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 18px;
+  background: rgba(243, 179, 126, 0.15);
+  border: 1px solid rgba(243, 179, 126, 0.2);
+  border-radius: 40px;
+  color: #f3b37e;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-cuento:hover {
+  background: rgba(243, 179, 126, 0.25);
+  border-color: #f3b37e;
+  color: #f5e9d8;
+}
+</style>
+
+<div class="play-container">
+  <div class="emoji-nino">🧒</div>
+  <h1>¡Hola, <%= @child.name %>!</h1>
+  <p class="bienvenida">🌟 Este es tu rincón especial en el Faro Digital Familiar.<br>
+  Aquí encontrarás cuentos y videos pensados para ti, con <strong>valores</strong> y <strong>aventuras</strong>.</p>
+
+  <!-- CUENTOS RECOMENDADOS -->
+  <div class="seccion">
+    <h2>📖 Cuentos con valores</h2>
+
+    <<div class="tarjeta">
+  <strong>🐢 La liebre y la tortuga</strong>
+  <p>La constancia y la humildad siempre ganan.</p>
+  <%= link_to "📖 Leer cuento completo", cuento_path(1), class: "btn-cuento" %>
+    </div>
+
+  <div class="tarjeta">
+  <strong>🦁 El león y el ratón</strong>
+  <p>No hay acto de bondad tan pequeño que no tenga recompensa.</p>
+  <%= link_to "📖 Leer cuento completo", cuento_path(2), class: "btn-cuento" %>
+    </div>
+
+   <div class="tarjeta">
+  <strong>🐜 La hormiga y el saltamontes</strong>
+  <p>El trabajo y la previsión son importantes.</p>
+    <%= link_to "📖 Leer cuento completo", cuento_path(3), class: "btn-cuento" %>
+    </div>
+  </div>
+
+  <!-- VIDEOS RECOMENDADOS -->
+  <div class="seccion">
+    <h2>🎥 Videos educativos</h2>
+
+    <div style="margin: 15px 0;">
+      <p style="color: #94b0c7; font-weight: 600;">🌈 El valor de la amistad</p>
+      <iframe src="https://www.youtube.com/embed/loUjLJ7bE6s" allowfullscreen></iframe>
+    </div>
+
+    <div style="margin: 15px 0;">
+      <p style="color: #94b0c7; font-weight: 600;">🌟 Aprender a compartir</p>
+      <iframe src="https://www.youtube.com/embed/h4cx7_5Ktqw" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <%= link_to "← Volver a Zona de Niños", zone_path, class: "btn-volver" %>
+</div>

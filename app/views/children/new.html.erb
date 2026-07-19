@@ -1,0 +1,37 @@
+<h1>Children#new</h1>
+<p>Find me in app/views/children/new.html.erb</p>
+<div style="max-width: 500px; margin: 50px auto; background: rgba(10, 25, 49, 0.85); padding: 40px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+  <h2 style="color: #f5e9d8; text-align: center;">🧒 Agregar Hijo</h2>
+
+  <% if @child.errors.any? %>
+    <div style="background: #ff6b6b; padding: 10px; border-radius: 10px; margin-bottom: 20px; color: white;">
+      <ul>
+        <% @child.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @child, url: children_path do |f| %>
+    <div style="margin-bottom: 15px;">
+      <%= f.label :name, "Nombre del hijo", style: "color: #d4c4a8;" %>
+      <%= f.text_field :name, placeholder: "Ej: Mateo", style: "width: 100%; padding: 12px; border-radius: 30px; border: none; background: rgba(255,255,255,0.1); color: white;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= f.label :age, "Edad", style: "color: #d4c4a8;" %>
+      <%= f.number_field :age, placeholder: "Ej: 5", style: "width: 100%; padding: 12px; border-radius: 30px; border: none; background: rgba(255,255,255,0.1); color: white;" %>
+    </div>
+
+    <%= f.submit "Agregar hijo", style: "width: 100%; padding: 14px; background: linear-gradient(145deg, #f3b37e, #d48c5a); border: none; border-radius: 30px; font-weight: bold; font-size: 18px; color: #0b1a2e; cursor: pointer;" %>
+  <% end %>
+
+  <p style="color: #94b0c7; text-align: center; margin-top: 20px;">
+    <%= link_to "← Volver al panel", panel_path, style: "color: #f3b37e;" %>
+
+    <p style="color: #94b0c7; text-align: center; margin-top: 20px;">
+  ¿No tienes cuenta? <%= link_to "Regístrate aquí", signup_path, style: "color: #f3b37e;" %>
+
+  </p>
+</div>

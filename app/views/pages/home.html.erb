@@ -1,0 +1,242 @@
+<style>
+  /* ===== RESET Y ESTILOS GLOBALES ===== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* === FONDO ESPACIAL (con la extensión correcta) === */
+    background-image: url("<%= asset_path 'fondo_espacial.jpg' %>");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 20px;
+  }
+
+  /* === CONTENEDOR PRINCIPAL === */
+  .portada-universo-faro {
+    width: 100%;
+    max-width: 700px;
+    background: rgba(24, 66, 156, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 60px 60px 40px 40px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* === FARO LOGO === */
+  .faro-logo {
+    width: 350px;
+    height: auto;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 150, 0.6));
+    animation: destello 3s infinite alternate;
+  }
+
+  @keyframes destello {
+    0% { filter: drop-shadow(0 0 15px rgba(255, 215, 150, 0.3)); }
+    100% { filter: drop-shadow(0 0 50px rgba(255, 215, 150, 0.9)); }
+  }
+
+  h1 {
+    color: #f5e9d8;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    margin-bottom: 5px;
+  }
+
+  .subtitulo {
+    color: #d4c4a8;
+    font-size: 20px;
+    font-weight: 300;
+    border-top: 2px solid rgba(243, 179, 126, 0.3);
+    border-bottom: 2px solid rgba(243, 179, 126, 0.3);
+    display: inline-block;
+    padding: 8px 28px;
+    border-radius: 50px;
+    margin-bottom: 15px;
+    background: rgba(243, 179, 126, 0.08);
+    letter-spacing: 1px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(243, 179, 126, 0.15);
+    border: 1px solid rgba(243, 179, 126, 0.25);
+    padding: 6px 22px;
+    border-radius: 40px;
+    font-size: 15px;
+    color: #f3b37e;
+    margin-bottom: 20px;
+  }
+
+  .form-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px 25px;
+    border-radius: 50px;
+    margin: 15px 0 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .input-group {
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .input-group label {
+    color: #d4c4a8;
+    font-weight: 500;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 60px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    outline: 2px solid transparent;
+    transition: 0.3s;
+  }
+
+  .input-group input:focus {
+    outline: 2px solid #f3b37e;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .btn {
+    background: linear-gradient(145deg, #f3b37e, #d48c5a);
+    border: none;
+    padding: 14px 30px;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #0b1a2e;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+
+  .btn:hover {
+    transform: scale(1.02);
+    background: linear-gradient(145deg, #ffc89c, #e69b6a);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: #f5e9d8;
+    margin-top: 8px;
+    box-shadow: none;
+    font-weight: 500;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: #f3b37e;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .links a {
+    color: #f5e9d8;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 14px;
+    border-radius: 60px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: 0.3s;
+    font-size: 16px;
+  }
+
+  .links a:hover {
+    background: rgba(243, 179, 126, 0.12);
+    border-color: #f3b37e;
+    transform: scale(1.02);
+    color: #fff;
+  }
+
+  .footer {
+    margin-top: 35px;
+    color: #94b0c7;
+    font-size: 13px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .footer strong {
+    color: #f5e9d8;
+  }
+
+  @media (max-width: 500px) {
+    .portada-universo-faro { padding: 30px 18px; }
+    h1 { font-size: 30px; }
+    .faro-logo { width: 80px; }
+  }
+</style>
+
+<!-- ===== CONTENIDO ===== -->
+<div class="portada-universo-faro">
+  <!-- IMAGEN DEL FARO (extensión .jpg) -->
+  <%= image_tag "faro_digital_familiar.jpg", class: "faro-logo", alt: "Faro Digital Familiar" %>
+
+  <h1>FARO DIGITAL FAMILIAR</h1>
+  <div class="subtitulo">✨ Guía y Protección en la Red ✨</div>
+  <div class="badge">🌱 Un espacio seguro para tu familia</div>
+
+  <div class="form-box">
+    <div class="input-group">
+      <label>👤 Usuario o correo</label>
+      <input type="text" placeholder="ejemplo@correo.com">
+    </div>
+    <div class="input-group">
+      <label>🔒 Contraseña</label>
+      <input type="password" placeholder="••••••••">
+    </div>
+    <%= form_with url: login_path, method: :post do %>
+      <%= submit_tag "🚀 Iniciar Sesión", class: "btn" %>
+    <% end %>
+    <button class="btn btn-secondary">🔑 ¿Olvidaste tu contraseña?</button>
+  </div>
+
+  <div class="links">
+    <%= link_to "👨‍👩‍👦 Panel de Padres", panel_path, class: "btn-faro-estilizado color-naranja-alegre" %>
+    <%= link_to "🧒 Zona de Niños", zone_path, class: "btn-faro-estilizado color-azul-ninos" %>
+    <%= link_to "📝 Registrar nueva cuenta de Padre", signup_path, class: "btn-faro-estilizado color-verde-registro" %>
+  </div>
+
+  <div class="footer">
+    © 2025 - Proyecto de Tesis <strong>"Faro Digital Familiar"</strong><br>
+    Universidad Tres Culturas
+  </div>
+</div>
